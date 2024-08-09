@@ -1,0 +1,16 @@
+{
+  "name": "aurora-2.0",
+  "version": "1.0.0",
+  "description": "SRV assistant",
+  "main": "src\\index.js",
+  "scripts": {
+    "test": "src\\index.js"
+  },
+  "author": "Basit",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.17.0",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  }
+}
