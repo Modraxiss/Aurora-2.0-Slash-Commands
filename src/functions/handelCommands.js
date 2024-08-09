@@ -28,14 +28,14 @@ module.exports = (client) => {
         const rest = new REST({ version: '10' }).setToken(process.env.token);
 
         (async () => {
-
-            console.log(`\x1b[93m%s\x1b[0m`, 'Started refreshing application (/) commands...');
-
             try {
+                console.log(`\x1b[93m%s\x1b[0m`, 'Started refreshing application (/) commands...');
+
                 await rest.put(
                     Routes.applicationCommands(clientId),
                     { body: client.commandArray }
                 );
+
                 console.log(`\x1b[34m%s\x1b[0m`, 'Successfully reloaded application (/) commands\n\n');
             } catch (err) {
                 console.log(`\x1b[31m%s\x1b[0m`, '\nFailed to reload application (/) commands\n');
