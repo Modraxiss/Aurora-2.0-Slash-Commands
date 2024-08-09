@@ -1,22 +1,15 @@
-const { Events } = require('discord.js');
-
 module.exports = {
-    name: Events.MessageReactionAdd,
-    async execute(reaction, user, client) {
-        // Check if the reaction is a ":wastebasket:" emoji
-        console.log('Reaction added by user:', await user.tag);
-        console.log('Reaction emoji:', await reaction.emoji.name);
-        console.log('Reaction message author:', await reaction.message.author.tag);
-
-        if (await reaction.emoji.name === `U+1F5D1`) {
+    name: 'messageReactionAdd',
+    async execute(reaction, user) {
+        if (reaction.emoji.name === '🗑️' && user.id === process.env.botOwnerID) {
             try {
                 const message = await reaction.message.fetch();
-                if (message.author.id === await reaction.client.user.id) {
-                    await message.delete();
+
+                if (message.author.id === reaction.client.user.id) {
+                    await message.react('✅');
+                    setTimeout(async () => { await message.delete() }, 1000);
                 }
-            } catch (err) {
-                console.error(err);
-            }
+            } catch (err) { }
         }
     },
 };
