@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    disable: false,
+    disable: true,
     data: new SlashCommandBuilder()
         .setName('serverinfo')
         .setDescription('Displays information about this server'),
