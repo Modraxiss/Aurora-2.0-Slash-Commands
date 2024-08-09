@@ -48,14 +48,11 @@ module.exports = {
 
                 if (voiceChannel && voiceChannel instanceof VoiceChannel) {
                     try {
-                        // Using @discordjs/voice to join the voice channel
-                        const connection = joinVoiceChannel({
+                        joinVoiceChannel({
                             channelId: voiceChannel.id,
                             guildId: guild.id,
                             adapterCreator: guild.voiceAdapterCreator,
                         });
-
-                        console.log(`Joined the voice channel ${voiceChannel.name}.`);
                     } catch (error) {
                         console.error(`Failed to join the voice channel:`, error);
                     }

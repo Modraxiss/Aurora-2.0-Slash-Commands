@@ -1,7 +1,7 @@
-const { Events, PermissionsBitField } = require('discord.js');
+const { PermissionsBitField } = require('discord.js');
 
 module.exports = {
-    name: Events.MessageCreate,
+    name: 'messageCreate',
     async execute(message, client) {
         if (message.channelId === process.env.gamelinks_channelID) {
             const isStarblastLink = message.content.includes("https://starblast.io/#");
