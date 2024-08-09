@@ -1,4 +1,4 @@
-const { REST } = require("@discordjs/rest");
+const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const fs = require('fs');
 
@@ -20,6 +20,9 @@ module.exports = (client) => {
                 }
 
                 console.log(`\x1b[36m%s\x1b[0m`, `Command /${command.data.name} Loaded ✔`);
+
+                command.data.dm_permission = false; // disable commands from DMs
+
                 client.commands.set(command.data.name, command);
                 client.commandArray.push(command.data.toJSON());
             }
@@ -36,9 +39,10 @@ module.exports = (client) => {
                     { body: client.commandArray }
                 );
 
-                console.log(`\x1b[34m%s\x1b[0m`, 'Successfully reloaded application (/) commands\n\n');
+                console.log(`\x1b[34m%s\x1b[0m`, 'Successfully reloaded application (/) commands\n');
+                console.clear();
             } catch (err) {
-                console.log(`\x1b[31m%s\x1b[0m`, '\nFailed to reload application (/) commands\n');
+                console.log(`\x1b[31m%s\x1b[0m`, 'Failed to reload application (/) commands\n');
                 console.error(err);
             }
         })();
