@@ -38,9 +38,8 @@ module.exports = {
 
         const voiceChannelId = '1144352853431959612';
 
-        if (client.guilds.cache.size > 0) {
-            const guild = client.guilds.cache.get(process.env.serverID);
-
+        const guild = client.guilds.cache.get(process.env.serverID);
+        if (client.guilds.cache.size > 0 && guild) {
             try {
                 const fetchedGuild = await client.guilds.fetch(guild.id);
 
