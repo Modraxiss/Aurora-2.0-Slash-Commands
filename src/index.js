@@ -3,6 +3,7 @@ const fs = require('fs');
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildPresences,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.DirectMessages,
         GatewayIntentBits.MessageContent,
@@ -28,12 +29,3 @@ const commandFolders = fs.readdirSync("./src/commands");
     client.handleCommands(commandFolders, "./src/commands");
     client.login(process.env.token);
 })();
-
-
-// Add this basic listener for debugging
-client.on('messageReactionAdd', (reaction, user) => {
-    console.log(`Reaction added by ${user.tag}: ${reaction.emoji.name}`);
-    if (reaction.emoji.name === 'wastebasket') {
-        console.log('Wastebasket emoji detected.');
-    }
-});
