@@ -1,4 +1,4 @@
 /node_modules
 .env
 /resource command.js
-src/commands/Music/play.js
+src/commands/Music
