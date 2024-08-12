@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
+    ephemeralReply: false,
     data: new SlashCommandBuilder()
         .setName('serverinfo')
         .setDescription('Displays information about this server'),
@@ -39,7 +40,7 @@ module.exports = {
 
             const serverInfo = new EmbedBuilder()
                 .setTitle(server.name + "                                                 ** **")
-                .setThumbnail(server.iconURL({ dynamic: true }))
+                .setThumbnail(server.iconURL({ dynamic: true }) || "https://raw.githubusercontent.com/Modraxiss/snippets/main/images/Blank%20Image.png")
                 .setColor('#2B2D31')
                 .setDescription(serverdata)
                 .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) });
