@@ -21,7 +21,7 @@ module.exports = (client) => {
 
                 console.log(`\x1b[36m%s\x1b[0m`, `Command /${command.data.name} Loaded ✔`);
 
-                command.data.dm_permission = false; // disable commands from DMs
+                command.data.dm_permission = false;
 
                 client.commands.set(command.data.name, command);
                 client.commandArray.push(command.data.toJSON());
