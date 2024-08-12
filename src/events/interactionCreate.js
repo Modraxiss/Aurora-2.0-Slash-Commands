@@ -59,12 +59,8 @@ module.exports = {
         } catch (error) {
             console.log(error);
 
-            if (interaction.replied || interaction.deferred) {
-                await interaction.editReply({ content: '<a:Warning:1264409367256502453> There was an error while executing this command!' });
-            } else {
-                await interaction.deferReply({ ephemeral: true });
-                await interaction.editReply({ content: '<a:Warning:1264409367256502453> There was an error while executing this command!' });
-            }
+            if (!interaction.replied || !interaction.deferred) await interaction.deferReply({ ephemeral: true });
+            await interaction.editReply({ content: '<a:Warning:1264409367256502453> There was an error while executing this command!' });
         }
     },
 };
