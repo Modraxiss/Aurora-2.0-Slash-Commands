@@ -42,10 +42,7 @@ module.exports = {
                 return;
             }
 
-            if (i.customId === 'restart_no') {
-                await interaction.editReply({ content: 'Bot restart has been canceled.', components: [] });
-                return;
-            }
+            if (i.customId === 'restart_no') return await interaction.editReply({ content: 'Bot restart has been canceled.', components: [] });
 
             if (i.customId === 'restart_yes') {
                 await interaction.editReply({ content: 'Restarting the bot...', components: [] });
@@ -59,8 +56,7 @@ module.exports = {
                     console.log(`stdout: ${stdout}`);
                     console.error(`stderr: ${stderr}`);
 
-                    setTimeout(async () => {
-                        await interaction.deleteReply();
+                    setTimeout(() => {
                         client.destroy();
                         process.exit();
                     }, 1000);
