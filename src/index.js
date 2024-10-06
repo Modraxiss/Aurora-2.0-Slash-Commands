@@ -23,13 +23,11 @@ const commandFolders = fs.readdirSync("./src/commands");
 
 (async () => {
     try {
-        for (const file of functions) {
-            const functionPath = path.join(__dirname, `./src/functions/${file}`);
-            require(functionPath)(client);
+        for (file of functions) {
+            require(`./functions/${file}`)(client);
         }
-
-        await client.handleEvents(eventFiles, path.join(__dirname, "./src/events"));
-        await client.handleCommands(commandFolders, path.join(__dirname, "./src/commands"));
+        await client.handleEvents(eventFiles, "./src/events");
+        await client.handleCommands(commandFolders, "./src/commands");
         await client.login(process.env.token);
     } catch (error) {
         console.error("Error occurred during bot startup:", error);
