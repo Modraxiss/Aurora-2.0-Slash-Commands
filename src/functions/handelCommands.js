@@ -13,7 +13,7 @@ module.exports = (client) => {
                 const command = require(`../commands/${folder}/${file}`);
 
                 if (command.disable && command.disable === true) {
-                    console.log(`\x1b[31m%s\x1b[0m`, `Command /${command.data.name} Stopped to Load`);
+                    console.log(`\x1b[31m%s\x1b[0m`, `Command /${command.data.name} Disabled`);
                     continue;
                 } else if (!command.data) {
                     continue;
